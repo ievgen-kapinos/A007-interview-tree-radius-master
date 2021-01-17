@@ -22,7 +22,7 @@ $(document).ready(function(){
 		  data: JSON.stringify(request)
 		})
 		.done(function(data, textStatus, jqXHR) {
-			$response.val("Done\n" + JSON.stringify(data));
+			$response.val("Done\n" + JSON.stringify(data, null, 2));
 	    })
 	    .fail(function(jqXHR, textStatus, errorThrown) {
 	    	$response.val("Fail\nText status = " + textStatus + "\nError thrown = " + errorThrown + "\nResponse text = " + jqXHR.responseText);

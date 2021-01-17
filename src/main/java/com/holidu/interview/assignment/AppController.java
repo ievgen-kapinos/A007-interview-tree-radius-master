@@ -1,5 +1,8 @@
 package com.holidu.interview.assignment;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,9 +38,13 @@ public class AppController
   
   @PostMapping(path = "/search", consumes = "application/json", produces = "application/json")
   @ResponseBody
-  public SearchRequest search(@RequestBody SearchRequest searchRequest) 
+  public Map<String, Integer> search(@RequestBody SearchRequest searchRequest) 
   {
-
-    return searchRequest;
+    Map<String, Integer> response = new HashMap<>();
+    
+    response.put("name", 7);
+    response.put("name2", 8);
+    
+    return response;
   }
 }
