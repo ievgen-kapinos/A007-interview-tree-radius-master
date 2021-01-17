@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Tree Radius</title>
+
+<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/popper.js/umd/popper.min.js"></script>
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="/index.js"></script>
+</head>
+<body>
+	<div class="container">
+		
+		<div class="row mt-4 mb-4">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-body">
+						<h1 class="card-title">Tree Radius</h1>
+						<p class="card-text">Allows User to make an aggregated search of trees (plants, not binary trees) in the circle.</p>
+						<p class="card-subtitle mb-2 text-muted">3rd party API endpoint: <span th:text="${apiEndpoint}">http://example.com</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row mb-4">
+			<div class="col-sm-12">
+				<div class="card-deck">
+				
+					<div class="card">
+						<div class="card-body">
+						<h5 class="card-title">Request</h5>
+							<div class="form-group">
+								<label for="x-label">X coordinate</label>
+								<input id="x" aria-describedby="x-toolpip" class="form-control" type="number" min="0" step="0.0001" th:value="${defaultX}" placeholder="API's x_sp value" >
+								<small id="x-toolpip" class="form-text text-muted">In state plane. Units are feet.</small>	
+							</div>
+
+							<div class="form-group">
+								<label for="y-label">Y coordinate</label>
+								<input id="y"  aria-describedby="y-toolpip" class="form-control" type="number" min="0" step="0.0001" th:value="${defaultY}" placeholder="API's y_sp value" >
+								<small id="y-toolpip" class="form-text text-muted">In state plane. Units are feet.</small>	
+							</div>
+							<div class="form-group">
+								<label for="radius-label">Radius</label>
+								<input id="radius" aria-describedby="radius-toolpip" class="form-control" type="number" min="0" th:value="${defaultRadius}" placeholder="TODO" >
+								<small id="radius-toolpip" class="form-text text-muted">A search radius in meters</small>	
+							</div>
+							<button id="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</div>
+					
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">Response</h5>
+							<textarea id="output" class="form-control" style="height: 90%" readonly></textarea>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

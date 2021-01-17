@@ -1,0 +1,6 @@
+tree-radius:
+  api-endpoint: https://data.cityofnewyork.us/resource/nwxe-4ae8.json
+  default:
+    x_sp: 1027431.148
+    y_sp: 202756.7687
+    radius: 1
