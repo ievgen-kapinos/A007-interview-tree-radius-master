@@ -1,6 +1,13 @@
 tree-radius:
   api-endpoint: https://data.cityofnewyork.us/resource/nwxe-4ae8.json
   default:
-    x: 1027431.148
-    y: 202756.7687
-    radius: 1
+    # Points to tree_id=180683 (first item) in the data set
+    # According to WKT, X is longitude, Y is latitude
+    x: -73.84421522 
+    y: 40.72309177
+    radius: 10
+    
+logging:
+  level:
+    # Allows to view what is in HTTP 
+    org.apache.http.wire: DEBUG

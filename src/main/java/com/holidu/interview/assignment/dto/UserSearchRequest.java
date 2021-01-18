@@ -1,15 +1,17 @@
-package com.holidu.interview.assignment;
+package com.holidu.interview.assignment.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 
-public class SearchRequest
+public class UserSearchRequest
 {
   private final double x;
   private final double y;
   private final double radius;
   
   @JsonCreator
-  public SearchRequest(double x, double y, double radius)
+  public UserSearchRequest(double x, 
+                           double y, 
+                           double radius)
   {
     this.x = x;
     this.y = y;
@@ -34,7 +36,7 @@ public class SearchRequest
   @Override
   public String toString()
   {
-    return "SearchRequest [x=" + x + 
+    return "UserSearchRequest [x=" + x + 
         ", y=" + y + 
         ", radius=" + radius + 
         "]";

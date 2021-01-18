@@ -35,13 +35,13 @@
 							<div class="form-group">
 								<label for="x-label">X coordinate</label>
 								<input id="x" aria-describedby="x-toolpip" class="form-control" type="number" min="0" step="0.0001" th:value="${defaultSearchRequest.x}">
-								<small id="x-toolpip" class="form-text text-muted">In state plane. Units are feet.</small>	
+								<small id="x-toolpip" class="form-text text-muted">Longitude of the cartesian center point, in decimal degrees (WGS84)</small>	
 							</div>
 
 							<div class="form-group">
 								<label for="y-label">Y coordinate</label>
 								<input id="y" aria-describedby="y-toolpip" class="form-control" type="number" min="0" step="0.0001" th:value="${defaultSearchRequest.y}">
-								<small id="y-toolpip" class="form-text text-muted">In state plane. Units are feet.</small>	
+								<small id="y-toolpip" class="form-text text-muted">Latitude of of the cartesian center point, in decimal degrees (WGS84)</small>	
 							</div>
 							<div class="form-group">
 								<label for="radius-label">Radius</label>
