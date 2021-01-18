@@ -3,14 +3,17 @@
 Original task description can be found [here](/docs/task-description.md)
 
 ## Run from source code 
+Pre-requirements
 * JDK 11
 * Maven
- 
+
+To run execute a command from source code root folder
 ```
 mvn spring-boot:run
 ```
 
 ## REST service
+Data can be retrieved using POST request.
 ```
 POST /search HTTP/1.1
 Accept: application/json
@@ -27,4 +30,4 @@ Also, for convenience implemented UI page which performs Ajax requests to `REST 
 ```
 http://localhost:8080/
 ```
-![ui.png](/docs/ui.png)
+![UI.png](/docs/UI.png)
