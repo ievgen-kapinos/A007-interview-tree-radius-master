@@ -28,6 +28,8 @@ public class AppController
   private final String apiEndpoint;
   private final RestOperations restTemplate;
   
+  private final String apiQuery;
+
   @Autowired
   public AppController(@Value("${tree-radius.api-endpoint}") String apiEndpoint,
                        @Value("${tree-radius.default.x}") double defaultX, 
@@ -40,6 +42,22 @@ public class AppController
                                                           defaultY, 
                                                           defaultRadius);
     this.restTemplate = restTemplate; 
+    
+    String query = 
+        " SELECT                             " +
+        "   spc_common AS commonName,        " +
+        "   COUNT(*) AS count                " +
+        " WHERE                              " +
+        "   within_circle('POINT ({X} {Y})', " +
+        "                 latitude,          " +
+        "                 longitude,         " +
+        "                 {radius})          " +
+        " GROUP BY                           " +
+        "   spc_common                       " +
+        ""; 
+    
+    // Shortening the URL by removing extra spaces
+    this.apiQuery = apiEndpoint + "?$query=" + query.replaceAll("\\s+", " "); 
   }
   
   @GetMapping("/")
@@ -59,26 +77,9 @@ public class AppController
     uriVariables.put("Y", userRequest.getY());
     uriVariables.put("radius", userRequest.getRadius());
     
-    String query = 
-        " SELECT                             " +
-        "   spc_common AS commonName,        " +
-        "   COUNT(*) AS count                " +
-        " WHERE                              " +
-        "   within_circle('POINT ({X} {Y})', " +
-        "                 latitude,          " +
-        "                 longitude,         " +
-        "                 {radius})          " +
-        " GROUP BY                           " +
-        "   spc_common                       " +
-        ""; 
-    
-    // Shortening the URL by removing extra spaces  
-    query = query.replaceAll("\\s+", " "); 
-    
-    ApiSearchResponseEntry[] apiResponse = 
-        restTemplate.getForObject(apiEndpoint + "?$query=" + query, 
-                                  ApiSearchResponseEntry[].class, 
-                                  uriVariables);
+    ApiSearchResponseEntry[] apiResponse = restTemplate.getForObject(apiQuery,
+                                                                     ApiSearchResponseEntry[].class, 
+                                                                     uriVariables);
     
     Map<String, Integer> userResponse = new HashMap<>();
     for (ApiSearchResponseEntry apiResponseEntry : apiResponse)
