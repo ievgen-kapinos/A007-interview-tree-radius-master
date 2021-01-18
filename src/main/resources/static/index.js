@@ -1,8 +1,6 @@
 $(document).ready(function(){
 
-	
 	$("#submit").click(function() {
-
 		var $submit = $("#submit");
 		let $response = $("#response");
 
@@ -25,10 +23,13 @@ $(document).ready(function(){
 			$response.val("Done\n" + JSON.stringify(data, null, 2));
 	    })
 	    .fail(function(jqXHR, textStatus, errorThrown) {
-	    	$response.val("Fail\nText status = " + textStatus + "\nError thrown = " + errorThrown + "\nResponse text = " + jqXHR.responseText);
+	    	$response.val("Fail\nText status = " + textStatus + 
+	    			"\nError thrown = " + errorThrown + 
+	    			"\nResponse text = " + jqXHR.responseText);
 	    })
 		.always(function() {
 			$submit.attr('disabled', false);
 		});
+		
 	});
 });

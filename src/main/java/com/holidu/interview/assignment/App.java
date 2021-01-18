@@ -11,7 +11,7 @@ public class App
 {
     public static void main(String[] args) 
     {
-        SpringApplication.run(App.class, args);
+      SpringApplication.run(App.class, args);
     }
     
     @Bean
@@ -23,5 +23,4 @@ public class App
       restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
       return restTemplate;
     }
-    
 }
